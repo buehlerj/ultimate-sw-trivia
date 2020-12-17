@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ScriptsService } from 'src/app/services/scripts.service';
+import { MovieCode } from 'src/app/structures/interfaces';
 
 @Component({
   selector: 'app-trivia',
@@ -8,11 +10,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TriviaComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private scriptsService: ScriptsService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      console.log(params.code);
+      console.log(this.scriptsService.getScript(params.code));
     });
   }
 
