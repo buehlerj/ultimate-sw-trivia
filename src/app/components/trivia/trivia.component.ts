@@ -14,7 +14,7 @@ export class TriviaComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      console.log(this.scriptsService.getScript(params.code));
+      this.scriptsService.getScript(params.code);
     });
   }
 
