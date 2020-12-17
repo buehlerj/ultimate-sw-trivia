@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie } from 'src/app/structures/interfaces';
+import { Movie, MovieCode } from 'src/app/structures/interfaces';
 
 @Component({
   selector: 'app-landing',
@@ -11,17 +11,17 @@ export class LandingComponent implements OnInit {
 
   constructor() {
     this.movies = [
-      { id: 1, title: 'Phantom Menace', poster: 'phantom_menace.jpg' },
-      { id: 2, title: 'Attack of the Clones', poster: 'attack_of_the_clones.jpg' },
-      { id: 3, title: 'Revenge of the Sith', poster: 'revenge.jpg' },
-      { id: 4, title: 'A New Hope', poster: 'anh.jpg' },
-      { id: 5, title: 'The Empire Strikes Back', poster: 'empire.jpg' },
-      { id: 6, title: 'Return of the Jedi', poster: 'return.jpg' },
-      { id: 7, title: 'The Force Awakens', poster: 'force_awakens.jpg' },
-      { id: 8, title: 'The Last Jedi', poster: 'last_jedi.jpg' },
-      { id: 9, title: 'The Rise of Skywalker', poster: 'rise_of_skywalker.jpg' },
-      { id: 10, title: 'Rogue One', poster: 'rogue.jpg' },
-      { id: 11, title: 'Solo', poster: 'solo.jpg' }
+      { code: MovieCode.phantom, title: 'Phantom Menace', poster: 'phantom_menace.jpg' },
+      { code: MovieCode.attack, title: 'Attack of the Clones', poster: 'attack_of_the_clones.jpg' },
+      { code: MovieCode.revenge, title: 'Revenge of the Sith', poster: 'revenge.jpg' },
+      { code: MovieCode.hope, title: 'A New Hope', poster: 'anh.jpg' },
+      { code: MovieCode.empire, title: 'The Empire Strikes Back', poster: 'empire.jpg' },
+      { code: MovieCode.return, title: 'Return of the Jedi', poster: 'return.jpg' },
+      { code: MovieCode.awakens, title: 'The Force Awakens', poster: 'force_awakens.jpg' },
+      { code: MovieCode.last, title: 'The Last Jedi', poster: 'last_jedi.jpg' },
+      { code: MovieCode.skywalker, title: 'The Rise of Skywalker', poster: 'rise_of_skywalker.jpg' },
+      { code: MovieCode.rogue, title: 'Rogue One', poster: 'rogue.jpg' },
+      { code: MovieCode.solo, title: 'Solo', poster: 'solo.jpg' }
     ];
   }
 
