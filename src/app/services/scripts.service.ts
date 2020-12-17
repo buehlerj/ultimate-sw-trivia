@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MovieCode } from '../structures/interfaces';
+import { MovieCode } from '../structures/enums';
 
 @Injectable({
   providedIn: 'root'
@@ -1874,7 +1874,7 @@ export class ScriptsService {
     };
   }
 
-  public getScript(movie: MovieCode) {
+  public getScript(movie: MovieCode): string[] {
     return this.scripts[movie];
   }
 }

@@ -1,1 +1,23 @@
-<div routerLink="/">Back</div>
+<div routerLink="/">< Back</div>
+
+Line {{linesAnswered}} / {{numberOfLines}}
+
+<div *ngIf="currentlySelectedLine">
+  {{currentlySelectedLine.line}}
+</div>
+
+<input [(ngModel)]="enteredValue" list="character-options" (keyup.enter)="checkIfAnswerIsCorrect()">
+<datalist id="character-options">
+  <option *ngFor="let character of characters" value="{{character}}">{{character}}</option>
+</datalist>
+<button (click)="checkIfAnswerIsCorrect()">Submit</button>
+
+<div (click)="skipLine()">Skip</div>
+
+<div>Correct: {{correctCounter}}</div>
+<div>Incorrect: {{incorrectCounter}}</div>
+<div>Skipped: {{skippedCounter}}</div>
+
+<div *ngIf="correctCounter + incorrectCounter > 0">
+  Percent Correct: {{100 * correctCounter / (correctCounter + incorrectCounter)}}
+</div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie, MovieCode } from 'src/app/structures/interfaces';
+import { MovieCode } from 'src/app/structures/enums';
+import { Movie } from 'src/app/structures/interfaces';
 
 @Component({
   selector: 'app-landing',
