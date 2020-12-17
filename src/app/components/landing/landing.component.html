@@ -1,0 +1,6 @@
+<div class="movie-option center" *ngFor="let movie of movies" [routerLink]="['/trivia', movie.code]">
+  <div>
+    {{movie.title}}
+  </div>
+  <img class="movie-poster" src="assets/images/posters/{{movie.poster}}">
+</div>
