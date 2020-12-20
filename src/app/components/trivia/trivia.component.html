@@ -1,1 +1,45 @@
-<div routerLink="/">Back</div>
+<div>
+  <button routerLink="/">
+    Back
+  </button>
+</div>
+
+<div>
+  Line {{linesAnswered}} / {{numberOfLines}}
+</div>
+
+<div>
+  <div class="grid" id="trivia-stats-line">
+    <div class="center trivia-stat-item highlight-item"
+      [class.highlight-correct-state]="triviaAnswerState === 'CORRECT'">
+      Correct: {{correctCounter}}
+    </div>
+    <div class="center trivia-stat-item highlight-item"
+      [class.highlight-incorrect-state]="triviaAnswerState === 'INCORRECT'">
+      Incorrect: {{incorrectCounter}}
+    </div>
+    <div class="center trivia-stat-item highlight-item" [class.highlight-skip-state]="triviaAnswerState === 'SKIP'">
+      Skipped: {{skippedCounter}}
+    </div>
+    <div class="center trivia-stat-item" [hidden]="percentCorrect === null">
+      Percent Correct: {{percentCorrect}}
+    </div>
+  </div>
+
+  <div id="trivia-line-guess">
+    <div *ngIf="currentlySelectedLine">
+      {{currentlySelectedLine.line}}
+    </div>
+
+    <input [(ngModel)]="enteredValue" list="character-options" (keyup.enter)="checkIfAnswerIsCorrect()">
+    <datalist id="character-options">
+      <option *ngFor="let character of characters" value="{{character}}">{{character}}</option>
+    </datalist>
+
+    <button class="trivia-button" (click)="checkIfAnswerIsCorrect()">Submit</button>
+
+    <button class="trivia-button" (click)="skipLine()">Skip</button>
+  </div>
+
+  <div [hidden]="!skippedCharacter">Skipped: {{skippedCharacter}}</div>
+</div>

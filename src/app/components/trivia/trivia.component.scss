@@ -1,0 +1,81 @@
+@import "../../../styles.scss";
+
+.trivia-button {
+  margin-left: 15px;
+}
+
+#trivia-line-guess {
+  margin: 18px 0;
+}
+
+.trivia-stat-item {
+  background-color: $blue;
+  margin: 0 9px;
+  padding: 5px 0;
+  color: #272727;
+}
+
+#trivia-stats-line {
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 16px;
+}
+
+.highlight-item {
+  animation-duration: 2s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+}
+
+.highlight-correct-state {
+  animation-name: highlight-correct-color;
+}
+
+@keyframes highlight-correct-color {
+  0% {
+    background-color: $green;
+  }
+
+  25% {
+    background-color: $green;
+  }
+
+  100% {
+    background-color: $blue;
+  }
+}
+
+.highlight-incorrect-state {
+  animation-name: highlight-incorrect-color;
+}
+
+@keyframes highlight-incorrect-color {
+  0% {
+    background-color: $red;
+  }
+
+  25% {
+    background-color: $red;
+  }
+
+  100% {
+    background-color: $blue;
+  }
+}
+
+.highlight-skip-state {
+  animation-name: highlight-skip-color;
+}
+
+@keyframes highlight-skip-color {
+  0% {
+    background-color: $yellow;
+  }
+
+  25% {
+    background-color: $yellow;
+  }
+
+  100% {
+    background-color: $blue;
+  }
+}
