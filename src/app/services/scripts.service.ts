@@ -10,7 +10,8 @@ export class ScriptsService {
 
   constructor() {
     this.scripts = {
-      [MovieCode.phantom]: ['QUI-GON: (off screen voice) Captain.',
+      [MovieCode.phantom]: [
+        'QUI-GON: (off screen voice) Captain.',
         'The Captain turns to an unseen figure sitting behind her.',
         'CAPTAIN: Yes, sir?',
         'QUI-GON: (V.O) Tell them we wish to board at once.',
@@ -1843,7 +1844,8 @@ export class ScriptsService {
         'CHILDEREN SING and throw flowers on the passing GUNGAN SOLDIERS. The CROWDS CHEER. It is a grand parade.',
         "QUEEN AMIDALA stands next to the SUPREME CHANCELLOR PALPATINE, ANAKIN, OBI-WAN, SIO BIBBLE, and the JEDI COUNCIL. ARTOO stands in front of the QUEEN'S HANDMAIDENS and whistles at the parade. QUEEN AMIDALA and PALPATINE smile at one another.",
         'In the parade are BOSS NASS and his GUARDS, JAR JAR and GENERAL CEEL. The GUNGANS ride KAADU. They stop before the QUEEN and walk up the steps to stand by her side. BOSS NASS holds up the Globe of Peace.',
-        'BOSS NASS: Peace!'],
+        'BOSS NASS: Peace!'
+      ],
       [MovieCode.attack]: [
         "LIEUTENANT: Senator, we're making our final approach in to Coruscant.",
         "SENATOR AMIDALA: Very good, Lieutenant.",
