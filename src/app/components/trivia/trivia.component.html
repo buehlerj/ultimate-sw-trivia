@@ -1,23 +1,36 @@
-<div routerLink="/">< Back</div>
-
-Line {{linesAnswered}} / {{numberOfLines}}
-
-<div *ngIf="currentlySelectedLine">
-  {{currentlySelectedLine.line}}
+<div>
+  <button routerLink="/">
+    Back
+  </button>
 </div>
 
-<input [(ngModel)]="enteredValue" list="character-options" (keyup.enter)="checkIfAnswerIsCorrect()">
-<datalist id="character-options">
-  <option *ngFor="let character of characters" value="{{character}}">{{character}}</option>
-</datalist>
-<button (click)="checkIfAnswerIsCorrect()">Submit</button>
+<div>
+  Line {{linesAnswered}} / {{numberOfLines}}
+</div>
 
-<div (click)="skipLine()">Skip</div>
+<div>
+  <div class="grid" id="trivia-stats-line">
+    <div class="center trivia-stat-item">Correct: {{correctCounter}}</div>
+    <div class="center trivia-stat-item">Incorrect: {{incorrectCounter}}</div>
+    <div class="center trivia-stat-item">Skipped: {{skippedCounter}}</div>
+  </div>
 
-<div>Correct: {{correctCounter}}</div>
-<div>Incorrect: {{incorrectCounter}}</div>
-<div>Skipped: {{skippedCounter}}</div>
+  <div id="trivia-line-guess">
+    <div *ngIf="currentlySelectedLine">
+      {{currentlySelectedLine.line}}
+    </div>
 
-<div *ngIf="correctCounter + incorrectCounter > 0">
-  Percent Correct: {{100 * correctCounter / (correctCounter + incorrectCounter)}}
+    <input [(ngModel)]="enteredValue" list="character-options" (keyup.enter)="checkIfAnswerIsCorrect()">
+    <datalist id="character-options">
+      <option *ngFor="let character of characters" value="{{character}}">{{character}}</option>
+    </datalist>
+
+    <button class="trivia-button" (click)="checkIfAnswerIsCorrect()">Submit</button>
+
+    <button class="trivia-button" (click)="skipLine()">Skip</button>
+  </div>
+
+  <div *ngIf="correctCounter + incorrectCounter > 0">
+    Percent Correct: {{100 * correctCounter / (correctCounter + incorrectCounter)}}
+  </div>
 </div>

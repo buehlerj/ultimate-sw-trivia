@@ -1,0 +1,20 @@
+@import '../../../styles.scss';
+
+.trivia-button {
+  margin-left: 15px;
+}
+
+#trivia-line-guess {
+  margin: 18px 0;
+}
+
+.trivia-stat-item {
+  background-color: $orange;
+  margin: 0 9px;
+  padding: 5px 0;
+}
+
+#trivia-stats-line {
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 16px;
+}

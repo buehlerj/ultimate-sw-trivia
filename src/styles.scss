@@ -1,8 +1,17 @@
+/* ----- Vars ----- */
+$orange: #af3a07;
+
+/* ----- HTML ----- */
 body {
   background-color: #292929;
   color: #d6d6d6;
 }
 
+/* ----- Utils ----- */
 .center {
   text-align: center;
+}
+
+.grid {
+  display: grid;
 }
