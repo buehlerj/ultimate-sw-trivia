@@ -10,14 +10,19 @@ export class TriviaService {
   public buildScript(scriptArray: string[]): any {
     const uniqueListOfCharacters = new Set();
     const lines = [];
+    let currentCharacter: string;
+    const ignoreCharacters: string[] = ['INTERIOR', 'EXTERIOR'];
 
     scriptArray.forEach((line: string) => {
       if (line.includes(':')) {
-        uniqueListOfCharacters.add(line.split(':')[0]);
-        lines.push({
-          character: line.split(':')[0],
-          line: line.split(':')[1]
-        });
+        currentCharacter = line.split(':')[0].trim();
+        if (!ignoreCharacters.includes(currentCharacter)) {
+          uniqueListOfCharacters.add(currentCharacter);
+          lines.push({
+            character: currentCharacter,
+            line: line.split(':')[1]
+          });
+        }
       }
     });
 
