@@ -11,3 +11,9 @@ export enum MovieCode {
   rogue = 'rogue',
   solo = 'solo'
 };
+
+export enum AnswerState {
+  CORRECT = 'CORRECT',
+  INCORRECT = 'INCORRECT',
+  SKIP = 'SKIP'
+}

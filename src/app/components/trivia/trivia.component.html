@@ -10,9 +10,20 @@
 
 <div>
   <div class="grid" id="trivia-stats-line">
-    <div class="center trivia-stat-item">Correct: {{correctCounter}}</div>
-    <div class="center trivia-stat-item">Incorrect: {{incorrectCounter}}</div>
-    <div class="center trivia-stat-item">Skipped: {{skippedCounter}}</div>
+    <div class="center trivia-stat-item highlight-item"
+      [class.highlight-correct-state]="triviaAnswerState === 'CORRECT'">
+      Correct: {{correctCounter}}
+    </div>
+    <div class="center trivia-stat-item highlight-item"
+      [class.highlight-incorrect-state]="triviaAnswerState === 'INCORRECT'">
+      Incorrect: {{incorrectCounter}}
+    </div>
+    <div class="center trivia-stat-item highlight-item" [class.highlight-skip-state]="triviaAnswerState === 'SKIP'">
+      Skipped: {{skippedCounter}}
+    </div>
+    <div class="center trivia-stat-item" [hidden]="percentCorrect === null">
+      Percent Correct: {{percentCorrect}}
+    </div>
   </div>
 
   <div id="trivia-line-guess">
@@ -30,7 +41,5 @@
     <button class="trivia-button" (click)="skipLine()">Skip</button>
   </div>
 
-  <div *ngIf="correctCounter + incorrectCounter > 0">
-    Percent Correct: {{100 * correctCounter / (correctCounter + incorrectCounter)}}
-  </div>
+  <div [hidden]="!skippedCharacter">Skipped: {{skippedCharacter}}</div>
 </div>
