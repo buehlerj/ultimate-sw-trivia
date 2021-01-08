@@ -82,7 +82,7 @@ export class TriviaComponent implements OnInit {
   }
 
   private calculatePercentCorrect() {
-    const divisor = this.correctCounter + this.incorrectCounter + this.skippedCounter;
+    const divisor = this.correctCounter + this.incorrectCounter;
     if (divisor > 0) {
       this.percentCorrect = this.correctCounter / divisor;
     }
