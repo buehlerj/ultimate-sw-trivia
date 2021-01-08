@@ -1,4 +1,5 @@
-<div class="movie-option center" *ngFor="let movie of movies" [routerLink]="['/trivia', movie.code]">
+<div class="movie-option center {{movie.enabled ? 'link' : 'not-ready'}}" *ngFor="let movie of movies"
+  (click)="route(movie)">
   <div>
     {{movie.title}}
   </div>

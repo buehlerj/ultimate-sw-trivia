@@ -5,6 +5,7 @@ export interface Movie {
   title: string;
   poster: string;
   script?: string;
+  enabled: boolean;
 };
 
 export interface Line {
