@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prod-build": "ng build --prod --base-href /ultimate-sw-trivia/"
+    "build-prod": "ng build --prod --base-href /ultimate-sw-trivia/"
   },
   "private": true,
   "dependencies": {
