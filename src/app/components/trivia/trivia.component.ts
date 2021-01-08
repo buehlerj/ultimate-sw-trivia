@@ -76,6 +76,7 @@ export class TriviaComponent implements OnInit {
   public skipLine() {
     this.skippedCounter++;
     this.skippedCharacter = this.currentlySelectedLine.character;
+    this.enteredValue = '';
     this.setCurrentlySelectedLine();
     this.calculatePercentCorrect();
     this.triviaAnswerState = AnswerState.SKIP;
