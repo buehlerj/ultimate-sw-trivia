@@ -64,11 +64,11 @@ export class TriviaComponent implements OnInit {
     if (this.currentlySelectedLine.character.toLowerCase() === this.enteredValue.toLowerCase()) {
       this.correctCounter++;
       this.enteredValue = '';
-      this.triviaAnswerState = AnswerState.CORRECT;
+      this.setAnswerState(AnswerState.CORRECT);
       this.setCurrentlySelectedLine();
     } else {
       this.incorrectCounter++;
-      this.triviaAnswerState = AnswerState.INCORRECT;
+      this.setAnswerState(AnswerState.INCORRECT);
     }
     this.calculatePercentCorrect();
   }
@@ -79,7 +79,7 @@ export class TriviaComponent implements OnInit {
     this.enteredValue = '';
     this.setCurrentlySelectedLine();
     this.calculatePercentCorrect();
-    this.triviaAnswerState = AnswerState.SKIP;
+    this.setAnswerState(AnswerState.SKIP);
   }
 
   private calculatePercentCorrect() {
@@ -87,5 +87,12 @@ export class TriviaComponent implements OnInit {
     if (divisor > 0) {
       this.percentCorrect = this.correctCounter / divisor;
     }
+  }
+
+  private setAnswerState(newState: AnswerState) {
+    this.triviaAnswerState = null;
+    setTimeout(() => {
+      this.triviaAnswerState = newState;
+    });
   }
 }
