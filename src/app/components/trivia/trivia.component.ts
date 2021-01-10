@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ScriptsService } from 'src/app/services/scripts.service';
 import { TriviaService } from 'src/app/services/trivia.service';
+import { UtilsService } from 'src/app/services/utils.service';
 import { AnswerState } from 'src/app/structures/enums';
 
 @Component({
@@ -15,8 +16,8 @@ export class TriviaComponent implements OnInit {
   public characters: any;
 
   public currentlySelectedLine: any;
+  public pastAnswers: any[];
   public enteredValue: any;
-  public skippedCharacter: string;
 
   public correctCounter: number;
   public incorrectCounter: number;
@@ -25,16 +26,18 @@ export class TriviaComponent implements OnInit {
   public numberOfLines: number;
   public percentCorrect: number;
   public triviaAnswerState: AnswerState;
+  public finished: boolean;
 
-  constructor(private route: ActivatedRoute, private scriptsService: ScriptsService, private triviaService: TriviaService) {
+  constructor(private route: ActivatedRoute, private scriptsService: ScriptsService, private triviaService: TriviaService, private utilsService: UtilsService) {
+    this.pastAnswers = [];
     this.enteredValue = '';
-    this.skippedCharacter = null;
     this.correctCounter = 0;
     this.incorrectCounter = 0;
     this.skippedCounter = 0;
     this.linesAnswered = 0;
     this.numberOfLines = 0;
     this.percentCorrect = null;
+    this.finished = false;
   }
 
   ngOnInit(): void {
@@ -42,6 +45,7 @@ export class TriviaComponent implements OnInit {
       const scriptArray = this.scriptsService.getScript(params.code);
       const scriptObject = this.triviaService.buildScript(scriptArray);
       this.script = scriptObject.lines;
+      this.utilsService.shuffle(this.script);
       this.characters = scriptObject.characters;
       this.numberOfLines = this.script.length;
 
@@ -50,24 +54,28 @@ export class TriviaComponent implements OnInit {
   }
 
   public setCurrentlySelectedLine() {
-    this.currentlySelectedLine = this.script.splice(Math.floor(Math.random() * this.script.length) + 1, 1)[0];
+    if (this.currentlySelectedLine) {
+      this.pastAnswers.unshift(this.currentlySelectedLine);
+    }
+    this.currentlySelectedLine = this.script.pop(0);
     this.linesAnswered++;
 
     // Done Answering Trivia
     if (this.linesAnswered === this.numberOfLines + 1) {
-      console.log('here');
+      this.finished = true;
     }
   }
 
   public checkIfAnswerIsCorrect() {
-    this.skippedCharacter = null;
     if (this.currentlySelectedLine.character.toLowerCase() === this.enteredValue.toLowerCase()) {
       this.correctCounter++;
       this.enteredValue = '';
       this.setAnswerState(AnswerState.CORRECT);
+      this.currentlySelectedLine.status = AnswerState.CORRECT;
       this.setCurrentlySelectedLine();
     } else {
       this.incorrectCounter++;
+      this.currentlySelectedLine.status = AnswerState.INCORRECT;
       this.setAnswerState(AnswerState.INCORRECT);
     }
     this.calculatePercentCorrect();
@@ -75,8 +83,10 @@ export class TriviaComponent implements OnInit {
 
   public skipLine() {
     this.skippedCounter++;
-    this.skippedCharacter = this.currentlySelectedLine.character;
     this.enteredValue = '';
+    if (!this.currentlySelectedLine.status) {
+      this.currentlySelectedLine.status = AnswerState.SKIP;
+    }
     this.setCurrentlySelectedLine();
     this.calculatePercentCorrect();
     this.setAnswerState(AnswerState.SKIP);
