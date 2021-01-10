@@ -20,7 +20,7 @@ export class TriviaService {
           uniqueListOfCharacters.add(currentCharacter);
           lines.push({
             character: currentCharacter,
-            line: line.split(':')[1]
+            line: line.split(': ')[1]
           });
         }
       }

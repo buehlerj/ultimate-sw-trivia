@@ -4,7 +4,7 @@
   </button>
 </div>
 
-<div>
+<div *ngIf="!finished">
   Line {{linesAnswered}} / {{numberOfLines}}
 </div>
 
@@ -26,8 +26,8 @@
     </div>
   </div>
 
-  <div id="trivia-line-guess">
-    <div *ngIf="currentlySelectedLine">
+  <div *ngIf="!finished" id="trivia-line-guess">
+    <div *ngIf="currentlySelectedLine" id="current-line-trivia">
       {{currentlySelectedLine.line}}
     </div>
 
@@ -41,5 +41,9 @@
     <button class="trivia-button" (click)="skipLine()">Skip</button>
   </div>
 
-  <div [hidden]="!skippedCharacter">Skipped: {{skippedCharacter}}</div>
+  <div id="answer-history-container">
+    <div *ngFor="let line of pastAnswers" class="answer-history-line history-{{line.status.toLowerCase()}}">
+      {{line.character}}: {{line.line}}
+    </div>
+  </div>
 </div>

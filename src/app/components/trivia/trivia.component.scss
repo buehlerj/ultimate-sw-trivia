@@ -1,11 +1,9 @@
 @import "../../../styles.scss";
 
-.trivia-button {
-  margin-left: 15px;
-}
-
-#trivia-line-guess {
-  margin: 18px 0;
+/* ----- Stats ----- */
+#trivia-stats-line {
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 16px;
 }
 
 .trivia-stat-item {
@@ -15,9 +13,21 @@
   color: #272727;
 }
 
-#trivia-stats-line {
-  grid-template-columns: repeat(4, 1fr);
-  margin-top: 16px;
+/* ----- Trivia Line ----- */
+#trivia-line-guess {
+  margin: 18px 0;
+  background-color: #1c1c1c;
+  padding: 9px 13px;
+  border: 1px solid white;
+  border-radius: 3px;
+}
+
+#current-line-trivia {
+  margin-bottom: 9px;
+}
+
+.trivia-button {
+  margin-left: 15px;
 }
 
 .highlight-item {
@@ -78,4 +88,28 @@
   100% {
     background-color: $blue;
   }
+}
+
+/* ----- History ----- */
+#answer-history-container {
+}
+
+.answer-history-line {
+  width: fit-content;
+  margin: 4px 0;
+  color: #292929;
+  padding: 2px 10px;
+  border-radius: 3px;
+}
+
+.history-correct {
+  background-color: $green;
+}
+
+.history-incorrect {
+  background-color: $red;
+}
+
+.history-skip {
+  background-color: $yellow;
 }
