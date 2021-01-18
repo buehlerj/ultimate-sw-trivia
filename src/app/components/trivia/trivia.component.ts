@@ -42,14 +42,17 @@ export class TriviaComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      const scriptArray = this.scriptsService.getScript(params.code);
-      const scriptObject = this.triviaService.buildScript(scriptArray);
-      this.script = scriptObject.lines;
-      this.utilsService.shuffle(this.script);
-      this.characters = scriptObject.characters;
-      this.numberOfLines = this.script.length;
+      this.scriptsService.getScript(params.code).then(
+        (scriptArray: string[]) => {
+          const scriptObject = this.triviaService.buildScript(scriptArray);
+          this.script = scriptObject.lines;
+          this.utilsService.shuffle(this.script);
+          this.characters = scriptObject.characters;
+          this.numberOfLines = this.script.length;
 
-      this.setCurrentlySelectedLine();
+          this.setCurrentlySelectedLine();
+        }
+      );
     });
   }
 
