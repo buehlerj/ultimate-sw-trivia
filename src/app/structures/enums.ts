@@ -17,3 +17,17 @@ export enum AnswerState {
   INCORRECT = 'INCORRECT',
   SKIP = 'SKIP'
 }
+
+export enum MovieTextCode {
+  phantom = '1 phantom menace script.txt',
+  attack = 'attack',
+  revenge = '3 Revenge of the Sith.txt',
+  hope = '4 A New Hope.txt',
+  empire = 'empire',
+  return = 'return',
+  awakens = '7 The Force Awakens.txt',
+  last = 'last',
+  skywalker = 'skywalker',
+  rogue = 'rogue',
+  solo = 'solo'
+}
