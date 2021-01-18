@@ -14,7 +14,7 @@ export class LandingComponent implements OnInit {
   constructor(private router: Router) {
     this.movies = [
       { code: MovieCode.phantom, title: 'Phantom Menace', poster: 'phantom_menace.jpg', enabled: true },
-      { code: MovieCode.attack, title: 'Attack of the Clones', poster: 'attack_of_the_clones.jpg', enabled: false },
+      { code: MovieCode.attack, title: 'Attack of the Clones', poster: 'attack_of_the_clones.jpg', enabled: true },
       { code: MovieCode.revenge, title: 'Revenge of the Sith', poster: 'revenge.jpg', enabled: true },
       { code: MovieCode.hope, title: 'A New Hope', poster: 'anh.jpg', enabled: true },
       { code: MovieCode.empire, title: 'The Empire Strikes Back', poster: 'empire.jpg', enabled: false },
