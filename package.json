@@ -8,7 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-prod": "ng build --prod --base-href /ultimate-sw-trivia/"
+    "build-prod": "ng build --prod --base-href /ultimate-sw-trivia/",
+    "build-prod-deploy": "ng build --configuration production --watch=false",
+    "docker-image": "docker build -t jeffapotamous/ultimateswtrivia:0.0.1 . && docker push jeffapotamous/ultimateswtrivia:0.0.1"
   },
   "private": true,
   "dependencies": {
