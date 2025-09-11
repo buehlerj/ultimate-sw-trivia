@@ -23,7 +23,7 @@ export enum MovieTextCode {
   attack = '2 Attack of the Clones.txt',
   revenge = '3 Revenge of the Sith.txt',
   hope = '4 A New Hope.txt',
-  empire = 'empire',
+  empire = '5 The Empire Strikes Back.txt',
   return = 'return',
   awakens = '7 The Force Awakens.txt',
   last = 'last',
